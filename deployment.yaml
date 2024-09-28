@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loco-app-deployment
+  labels:
+    app: loco-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: loco-app
+  template:
+    metadata:
+      labels:
+        app: loco-app
+    spec:
+      containers:
+      - name: loco-app
+        image: anand49/loco-app:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "500m"
